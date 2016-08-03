@@ -24,7 +24,7 @@ This is the listings page
 	<td><%= listing.country_code %></td>
 	<td><%= listing.user.email if listing.user.present? %></td>
 	<td><%= link_to "Tell me more", listing %></td>
-	<% if signed_in? %>
+	<% if current_user == listing.user  %>
 		<td><%= link_to "Edit", edit_listing_path(listing) %></td>
 		<td><%= link_to "Delete", listing_path(listing), method: :delete %></td>
 	<% end %>
