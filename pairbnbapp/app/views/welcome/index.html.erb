@@ -1,8 +1,8 @@
 <div class="jumbotron">
 	<div class="container">
 		<h1>Welcome!</h1>
-		<%= link_to("User profile", edit_user_path(current_user) ) if signed_in? %>
-		<%= link_to("Browse Listings", listings_path) %>
-		<%= link_to("Post new listing", new_listing_path) %>
+		<%= link_to("User profile |", edit_user_path(current_user) ) if signed_in? %>
+		<%= link_to("Browse Listings |", listings_path) %>
+		<%= link_to("Post new listing |", new_listing_path) %>
 	</div>
 </div>
