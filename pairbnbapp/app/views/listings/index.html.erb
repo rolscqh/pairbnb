@@ -1,0 +1,35 @@
+This is the listings page
+
+<%= link_to("Post new listing", new_listing_path) %>
+
+<table class="table">
+	<th>id</th>
+	<th>Title</th>
+	<th>Address</th>
+	<th>Country</th>
+	<th>Contact email</th>
+	<td>Actions</td>
+		<% if signed_in? %>
+			<td>Edit</td>
+			<td>Delete</td>
+		<% end %>
+	</tr>
+
+
+<% @listings.each do |listing| %>
+<tr>
+	<td><%= listing.id %></td>
+	<td><%= listing.title %></td>
+	<td><%= listing.address %></td>
+	<td><%= listing.country_code %></td>
+	<td><%= listing.user.email if listing.user.present? %></td>
+	<td><%= link_to "Tell me more", listing %></td>
+	<% if signed_in? %>
+		<td><%= link_to "Edit", edit_listing_path(listing) %></td>
+		<td><%= link_to "Delete", listing_path(listing), method: :delete %></td>
+	<% end %>
+</tr>
+	<% end %>
+</table>
+
+<%= link_to("Main page", root_path) %>

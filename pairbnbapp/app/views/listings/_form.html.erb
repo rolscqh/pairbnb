@@ -1,0 +1,14 @@
+<%= form_for @listing do |f| %>
+	<%= f.label :Title %>:
+	<%= f.text_field :title %><br />
+	
+	<%= f.label :Address %>:
+	<%= f.text_field :address %><br />
+	
+	<%= f.label :Country %>:
+	<%= f.country_select :country_code, ["US", "GB", "SG"] %><br />
+	
+	<%= f.label :contact_email %>:
+	<%= f.text_field :contact_email %><br />
+  <%= f.submit %>
+<% end %>

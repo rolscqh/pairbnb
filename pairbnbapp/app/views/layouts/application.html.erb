@@ -2,14 +2,25 @@
 <html>
 <head>
   <%= javascript_include_tag 'application' %>
+  <%= stylesheet_link_tag 'application' %>
   <%= csrf_meta_tag %>
 </head>
 <body>
   <div id="header">
     <% if signed_in? -%>
       <%= button_to t(".sign_out"), sign_out_path, method: :delete %>
+        <div id="right_header">
+          <%= link_to current_user.email, edit_user_path(current_user) %>
+        </div>
     <% else -%>
       <%= link_to t(".sign_in"), sign_in_path %>
+        <div id="user-widget">
+          <% if current_user %>
+            <%= link_to "Sign out", signout_path, id: "sign_out" %>
+          <% else %>
+            <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
+          <% end %>
+        </div>
     <% end -%>
   </div>
 
@@ -19,13 +30,7 @@
     <% end %>
   </div>
 
-  <div id="user-widget">
-  <% if current_user %>
-    <%= link_to "Sign out", signout_path, id: "sign_out" %>
-  <% else %>
-    <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
-  <% end %>
-</div>
+
 
   <%= yield %>
 </body>
